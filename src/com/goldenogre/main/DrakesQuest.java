@@ -7,11 +7,11 @@ import com.goldenogre.entity.Hero;
 public class DrakesQuest {
 
 	public static void main(String[] args) {
-		Hero player_1 = new Hero("Damian",100,30);
-		Enemy imp = new Enemy("Imp",4,30);
+		Hero player01 = new Hero("Damian",100,30, 0, 0, 0, 0, 0,'a');
+		Enemy enemy01 = new Enemy("Imp",4,30, 0, 0, 0, 0, 0,'a');
 		Battle fight;
 		
-		fight = new Battle(imp,player_1);
+		fight = new Battle(enemy01,player01);
 		
 
 	}

@@ -4,12 +4,30 @@ abstract class Entity {
 	private String name;
 	private int hitPoints;
 	private int attack;
-	public Entity(String name, int hitPoints, int attack) {
-		this.name = name;
-		this.hitPoints = hitPoints;
-		this.attack = attack;
-	}
+	private int critical;
+	private int evasion;
+	private int defense;
+	private int magicDefense;
+	private int experience;
+	private char resist;
 	
+	
+
+
+public Entity(String name, int hitPoints, int attack, int critical, int evasion, int defense, int magicDefense,
+		int experience, char resist) {
+	super();
+	this.name = name;
+	this.hitPoints = hitPoints;
+	this.attack = attack;
+	this.critical = critical;
+	this.evasion = evasion;
+	this.defense = defense;
+	this.magicDefense = magicDefense;
+	this.experience = experience;
+	this.resist = resist;
+}
+
 	public String getName() {
 		return name;
 	}
@@ -36,6 +54,53 @@ abstract class Entity {
 
 	public String toString() {
 		return "Entity class name = " + name;
+	}
+	public int getCritical() {
+		return critical;
+	}
+
+	public void setCritical(int critical) {
+		this.critical = critical;
+	}
+
+	public int getEvasion() {
+		return evasion;
+	}
+
+	public void setEvasion(int evasion) {
+		this.evasion = evasion;
+	}
+
+	public int getDefense() {
+		return defense;
+	}
+
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+
+	public int getMagicDefense() {
+		return magicDefense;
+	}
+
+	public void setMagicDefense(int magicDefense) {
+		this.magicDefense = magicDefense;
+	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void setExperience(int experience) {
+		this.experience = experience;
+	}
+
+	public char getResist() {
+		return resist;
+	}
+
+	public void setResist(char resist) {
+		this.resist = resist;
 	}
 
 }
