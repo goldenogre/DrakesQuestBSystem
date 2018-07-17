@@ -1,3 +1,7 @@
+/* Testing out battle mechanic ideas, especially turn order and randomness. 
+ */
+
+
 import java.util.*;
 
 public class HelloWorld{
@@ -31,50 +35,50 @@ public class HelloWorld{
         System.out.println(player1.getName());
         System.out.println(enemy2.getName());
         
-        BattleSim fight = new BattleSim(Hgroup,Egroup);
+        BattleSim fight;
+        fight = new BattleSim(Hgroup,Egroup);
+        Egroup.remove(0);
+        fight = new BattleSim(Hgroup,Egroup);
      }
 }
 
 class BattleSim{
     public BattleSim(ArrayList<Hero> h, ArrayList<Enemy> e){
-        ArrayList<Enemy> en = e;
-        
-        
-        int hAlive = h.size();
-        int eAlive = e.size();
+        ArrayList<Enemy> en = new ArrayList<Enemy>(e);
+        ArrayList<Hero> he = h;
+        Random rand = new Random(); 
+        int hAlive = he.size();
+        int eAlive = en.size();
         int alive = hAlive + eAlive;
         System.out.println("Battle Commenced");
         System.out.println("Total(9): " + alive);
        
         
-        while(eAlive != 0){
+        while((eAlive != 0) && (hAlive >0)){
             System.out.println("Enemies left: " + eAlive);
-            System.out.println(e);
-            e.remove(0);
-            eAlive--;
-            Collections.shuffle(e);
+            System.out.println(en);
+            System.out.println(he);
+            if(rand.nextBoolean()){
+                System.out.println(he.remove(0)+ " Died");
+                hAlive--;
+            } else {
+                
+                System.out.println(en.remove(0)+ " Died");
+                eAlive--;
+            }
+            
+            
+            Collections.shuffle(en);
         }
         
         
-        for(int i=0;i<10;i++){
-            
-            System.out.println(e);
-            Collections.shuffle(e);
-            
-        }
+        
         System.out.println("Done");
        
      //  System.out.println("Hero: " + h.get(0).getName());
        
     }
-    public static int next() {
-       Random rand = new Random(); 
-  if (rand.nextBoolean()) {
-    return 1;
-  } else {
-    return 2;
-  }
-    }
+    
 }
 
 class Hero{
