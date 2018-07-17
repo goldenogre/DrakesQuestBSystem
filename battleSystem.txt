@@ -1,0 +1,103 @@
+import java.util.*;
+
+public class HelloWorld{
+    
+     public static void main(String []args){
+        Hero player1 = new Hero("Fighter");
+        Hero player2 = new Hero("Theif");
+        Hero player3 = new Hero("BlackMage");
+        Hero player4 = new Hero("WhiteMage");
+        Enemy enemy1 = new Enemy("Lich");
+        Enemy enemy2 = new Enemy("Marilith");
+        Enemy enemy3 = new Enemy("Kraken");
+        Enemy enemy4 = new Enemy("Tiamat");
+        Enemy enemy5 = new Enemy("Chaos");
+        ArrayList<Hero> Hgroup = new ArrayList<Hero>();
+        ArrayList<Enemy> Egroup = new ArrayList<Enemy>();
+        Egroup.add(enemy1);
+        Egroup.add(enemy2);
+        Egroup.add(enemy3);
+        Egroup.add(enemy4);
+        Egroup.add(enemy5);
+        Hgroup.add(player1);
+        Hgroup.add(player2);
+        Hgroup.add(player3);
+        Hgroup.add(player4);
+        
+        System.out.println(Egroup);
+        System.out.println(Hgroup);
+        
+        System.out.println("Hello Fish Sim");
+        System.out.println(player1.getName());
+        System.out.println(enemy2.getName());
+        
+        BattleSim fight = new BattleSim(Hgroup,Egroup);
+     }
+}
+
+class BattleSim{
+    public BattleSim(ArrayList<Hero> h, ArrayList<Enemy> e){
+        ArrayList<Enemy> en = e;
+        
+        
+        int hAlive = h.size();
+        int eAlive = e.size();
+        int alive = hAlive + eAlive;
+        System.out.println("Battle Commenced");
+        System.out.println("Total(9): " + alive);
+       
+        
+        while(eAlive != 0){
+            System.out.println("Enemies left: " + eAlive);
+            System.out.println(e);
+            e.remove(0);
+            eAlive--;
+            Collections.shuffle(e);
+        }
+        
+        
+        for(int i=0;i<10;i++){
+            
+            System.out.println(e);
+            Collections.shuffle(e);
+            
+        }
+        System.out.println("Done");
+       
+     //  System.out.println("Hero: " + h.get(0).getName());
+       
+    }
+    public static int next() {
+       Random rand = new Random(); 
+  if (rand.nextBoolean()) {
+    return 1;
+  } else {
+    return 2;
+  }
+    }
+}
+
+class Hero{
+    private String name;
+    public Hero(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    public String toString(){
+        return name;
+    }
+}
+class Enemy{
+    private String name;
+    public Enemy(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    public String toString(){
+        return name;
+    }
+}
