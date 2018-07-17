@@ -7,15 +7,15 @@ import java.util.*;
 public class HelloWorld{
     
      public static void main(String []args){
-        Hero player1 = new Hero("Fighter");
-        Hero player2 = new Hero("Theif");
-        Hero player3 = new Hero("BlackMage");
-        Hero player4 = new Hero("WhiteMage");
-        Enemy enemy1 = new Enemy("Lich");
-        Enemy enemy2 = new Enemy("Marilith");
-        Enemy enemy3 = new Enemy("Kraken");
-        Enemy enemy4 = new Enemy("Tiamat");
-        Enemy enemy5 = new Enemy("Chaos");
+        Hero player1 = new Hero("Fighter", 100);
+        Hero player2 = new Hero("Theif", 100);
+        Hero player3 = new Hero("BlackMage", 100);
+        Hero player4 = new Hero("WhiteMage", 100);
+        Enemy enemy1 = new Enemy("Lich", 100);
+        Enemy enemy2 = new Enemy("Marilith", 100);
+        Enemy enemy3 = new Enemy("Kraken", 100);
+        Enemy enemy4 = new Enemy("Tiamat", 100);
+        Enemy enemy5 = new Enemy("Chaos", 100);
         ArrayList<Hero> Hgroup = new ArrayList<Hero>();
         ArrayList<Enemy> Egroup = new ArrayList<Enemy>();
         Egroup.add(enemy1);
@@ -31,14 +31,14 @@ public class HelloWorld{
         System.out.println(Egroup);
         System.out.println(Hgroup);
         
-        System.out.println("Hello Fish Sim");
-        System.out.println(player1.getName());
-        System.out.println(enemy2.getName());
+        System.out.println("Hello Fight Sim\n\n");
+        // System.out.println(player1.getName());
+        // System.out.println(enemy2.getName());
         
         BattleSim fight;
         fight = new BattleSim(Hgroup,Egroup);
-        Egroup.remove(0);
-        fight = new BattleSim(Hgroup,Egroup);
+      //  Egroup.remove(0);
+    //    fight = new BattleSim(Hgroup,Egroup);
      }
 }
 
@@ -55,24 +55,32 @@ class BattleSim{
        
         
         while((eAlive != 0) && (hAlive >0)){
-            System.out.println("Enemies left: " + eAlive);
             System.out.println(en);
             System.out.println(he);
-            if(rand.nextBoolean()){
-                System.out.println(he.remove(0)+ " Died");
-                hAlive--;
-            } else {
+            
+            
+                System.out.println("Begin turn:");
+                System.out.println("Enemies left: " + eAlive);
+                System.out.println("Heros alive: " + hAlive);
                 
-                System.out.println(en.remove(0)+ " Died");
-                eAlive--;
-            }
+                
+                if(rand.nextBoolean()){ 
+                // if true, Enemy attacks
+                    System.out.println(en.get(0)+ " Attacks " + he.get(0) + " for 20.\n\n");
+                    he.get(0).damage(20);
+                    if(he.get(0).getLife() == 0){
+                        System.out.println("*********** "+ he.remove(0)+ " Died\n\n");
+                        hAlive--;
+                    }
+                } else {
+                
+                    System.out.println("*********** "+ en.remove(0)+ " Died\n\n");
+                    eAlive--;
+                }
             
-            
+            System.out.println("End turn\n\n\n");
             Collections.shuffle(en);
         }
-        
-        
-        
         System.out.println("Done");
        
      //  System.out.println("Hero: " + h.get(0).getName());
@@ -83,25 +91,46 @@ class BattleSim{
 
 class Hero{
     private String name;
-    public Hero(String name){
+    private int life;
+    public Hero(String name, int life){
         this.name = name;
+        this.life = life;
     }
     public String getName(){
         return name;
     }
+    public int getLife(){
+        return life;
+    }
+    public void damage(int att){
+        life = life - att;
+        if(life<0)
+            life = 0;
+    }
+    
     public String toString(){
-        return name;
+        return name + " " +life;
     }
 }
 class Enemy{
     private String name;
-    public Enemy(String name){
+    private int life;
+    public Enemy(String name, int life){
         this.name = name;
+        this.life = life;
     }
     public String getName(){
         return name;
     }
+    public int getLife(){
+        return life;
+    }
+    public void damage(int att){
+        life = life - att;
+        if(life<0)
+            life = 0;
+    }
     public String toString(){
-        return name;
+        return name + " " + life;
     }
 }
