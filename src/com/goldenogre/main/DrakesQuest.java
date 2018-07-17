@@ -11,7 +11,7 @@ public class DrakesQuest {
 		Enemy enemy01 = new Enemy("Imp",4,30, 0, 0, 0, 0, 0,'a');
 		Battle fight;
 		
-		fight = new Battle(enemy01,player01);
+		fight = new Battle(enemy01, 2, player01,2);
 		
 
 	}
