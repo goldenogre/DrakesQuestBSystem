@@ -1,6 +1,7 @@
 package com.goldenogre.battlesystem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.goldenogre.entity.Enemy;
 import com.goldenogre.entity.Hero;
@@ -15,11 +16,14 @@ public class Battle {
 		int enemyCount = enemies;
 		int heroesCount = heroes;
 		int totalCount = enemies + heroes;
-		ArrayList<Integer>list = new ArrayList<Integer>();
-		for(int i=1;i<=totalCount;i++) {
-			list.add(i);
-		}
+		//ArrayList<Integer>list = new ArrayList<Integer>();
+		String[] who = new String[totalCount]; 
 		
+//		for(int i=1;i<=totalCount;i++) {
+//			list.add(i);
+//		}
+		//System.out.println("Order: " + list.toString());
+		//Collections.shuffle(list);
 		System.out.println("Battle initiated: ");
 		System.out.println("Enemies: " + enemyCount);
 		System.out.println(heroesCount > 1 ? "Heroes: " + heroesCount: "Hero: 1" );
@@ -29,7 +33,9 @@ public class Battle {
 	}
 	public static void initTurn(int[]battle) {
 		
-		 
+//		for(int i = 0; i<battle.length;i++) {
+//			if(battle[i]==)
+//		}
 	}
 	public static int attack() {
 		int damage = en.getAttack();
