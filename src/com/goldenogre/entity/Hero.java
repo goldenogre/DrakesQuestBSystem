@@ -7,8 +7,8 @@ public class Hero extends Entity {
 	private char skillKey;
 	
 	public Hero(String name, int hitPoints, int attack, int critical, int evasion, int defense, int magicDefense,
-			int experience, char resist) {
-		super(name, hitPoints, attack, critical, evasion, defense, magicDefense, experience, resist);
+			int experience, char resist,boolean isDead) {
+		super(name, hitPoints, attack, critical, evasion, defense, magicDefense, experience, resist,isDead);
 		// TODO Auto-generated constructor stub
 	}
 

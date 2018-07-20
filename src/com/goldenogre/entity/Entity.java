@@ -10,12 +10,13 @@ abstract class Entity {
 	private int magicDefense;
 	private int experience;
 	private char resist;
+	private boolean isDead;
 	
 	
 
 
 public Entity(String name, int hitPoints, int attack, int critical, int evasion, int defense, int magicDefense,
-		int experience, char resist) {
+		int experience, char resist, boolean isDead) {
 	super();
 	this.name = name;
 	this.hitPoints = hitPoints;
@@ -26,6 +27,7 @@ public Entity(String name, int hitPoints, int attack, int critical, int evasion,
 	this.magicDefense = magicDefense;
 	this.experience = experience;
 	this.resist = resist;
+	this.isDead=false;
 }
 
 	public String getName() {
@@ -53,7 +55,7 @@ public Entity(String name, int hitPoints, int attack, int critical, int evasion,
 	}
 
 	public String toString() {
-		return "Entity class name = " + name;
+		return  name + " " +hitPoints;
 	}
 	public int getCritical() {
 		return critical;
@@ -102,5 +104,19 @@ public Entity(String name, int hitPoints, int attack, int critical, int evasion,
 	public void setResist(char resist) {
 		this.resist = resist;
 	}
+	public boolean isDead() {
+		
+		return isDead;
+	}
+	// attack 
+	public void damage(int att){
+        hitPoints = hitPoints - att;
+        if(hitPoints<=0) {
+        	hitPoints = 0;
+        	isDead = true;
+        }
+        
+            
+    }
 
 }
